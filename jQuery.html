@@ -1,183 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script>
-    window.onload = function () {
-      $('strong').css('color', 'green')
-      $('em').addClass('selected')
-      $('.row mark').addClass('selected')
-      $('a').css('text-decoration', 'none')
-      console.log($('.conteiner').find('*:contains("Задания")'))
-      $('strong.some').toggleClass('some')
-      $('.row:eq(1)').removeClass('row')
-      console.log($('a:eq(1)').css('color'))
-
-      $('.buttonColor').click(function () {
-        $('body').css('background-color', 'gray')
-      })
-      $('form').submit(function (e) {
-        let fields = true
-        $('form input[type="text"]').each(function () {
-          if ($(this).val() == '') {
-            fields = false
-          }
-        })
-        if (!fields) {
-          e.preventDefault()
-          alert('Заполните все поля!')
-        }
-      })
-      $('#buttonLeft').click(function () {
-        $('.task3 .element').animate({ left: '-=200px'}, 'fast')
-      })
-      $('#buttonRight').click(function () {
-        $('.task3 .element').animate({ left: '+=200px'}, 'fast')
-      })
-      $(document).mousemove(function (e) {
-        console.log('x: ' + e.pageX + ', y: ' + e.pageY)
-      })
-      
-
-      $('.task6 strong, .task6 em').hover(function () {
-        $(this).css('color', 'blue')
-        $(this).animate({'font-size': '20px'}, 'slow')
-      }, function () {
-        $(this).css('color', 'black')
-        $(this).animate({'font-size': '16px'}, 'slow')
-      })
-      $('#box').hover(function () {
-        $('.some').animate({'transform': 'rotate(90deg)'}, 'slow')
-      }, function () {
-        $('.some').animate({'transform': 'rotate(0deg)'}, 'slow')
-      })
-
-      $('.lightbox').css({
-		position: 'fixed',
-		top:'50%',
-		left:'50%',
-		margin:'-'+($('.lightbox').height() / 2)+'px 0 0 -'+($('.lightbox').width() / 2)+'px'
-	})
-	$('a.open').click(function(e) {
-		e.preventDefault();
-		$('.lightbox').fadeIn(800);
-		$('.overlay').fadeIn(800);
-	})
-	$('a.close, .overlay').click(function(e) {
-		e.preventDefault();
-		$('.lightbox').fadeOut(800);
-		$('.overlay').fadeOut(800);
-	})
-
-  $('.accordion_body').css('display', 'none')
-  $('.accordion_header').click(function () {
-    let body = $(this).next('.accordion_body')
-    if (!body.is(':visible')) { 
-      $('.accordion_body').slideUp()
-      body.slideDown()
-    }
-  })
-    }
-  </script>
-  <style>
-    * {
-      font-family: Arial;
-    }
-
-    a {
-      color: #369;
-      font-weight: bold;
-    }
-
-    .selected {
-      background: #f63;
-    }
-
-    .element {
-      width: 50px;
-      height: 50px;
-      position: relative;
-      background-color: #f63;
-      margin: 10px;
-    }
-
-    .task7 #box {
-      text-align: center;
-      width: 50px;
-      height: 30px;
-      border: 2px solid #369;
-    }
-
-    .task7 .some {
-      width: 50px;
-      height: 50px;
-      margin: 10px;
-      background-color: #369;
-    }
-
-    .overlay {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	background: #000;
-	opacity: 0.8;
-}
-   
-.lightbox {
-	display: none;
-	width: 500px;
-	padding: 25px;
-	background: #ffffff;
-	box-shadow: 0 0 25px #111111;
-	-moz-box-shadow: 0 0 25px #111111;
-	-webkit-box-shadow: 0 0 25px #111111;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	z-index: 99;
-} 
-   
-a.close {
-	position: absolute;
-	top: 15px;
-	right: 15px;
-}
-  </style>
-</head>
-
-<body>
+<body><div id="highlighter"></div>
   <h1>Задания по jQuery на выборку</h1>
   <div class="container">
-    Задания по <a href="#">jQuery</a>
-    Lorem <strong>ipsum</strong> dolor sit amet, <mark>consectetur</mark> adipisicing elit. Optio dolor reprehenderit
-    ea, animi vitae neque, odio <em>architecto</em> quis commodi ut.
+    Задания по <a href="#" style="text-decoration: none;">jQuery</a>
+    Lorem <strong style="color: green;">ipsum</strong> dolor sit amet, <mark>consectetur</mark> adipisicing elit. Optio dolor reprehenderit
+    ea, animi vitae neque, odio <em class="selected">architecto</em> quis commodi ut.
 
     <div class="row">
-      <div class="col-md-4">Lorem <strong>ipsum</strong> dolor sit amet, <mark>consectetur</mark> adipisicing elit.
-        Optio dolor reprehenderit ea, animi vitae neque, odio <em>architecto</em> quis commodi ut.</div>
+      <div class="col-md-4">Lorem <strong style="color: green;">ipsum</strong> dolor sit amet, <mark class="selected">consectetur</mark> adipisicing elit.
+        Optio dolor reprehenderit ea, animi vitae neque, odio <em class="selected">architecto</em> quis commodi ut.</div>
       <div class="col-md-4">Maxime tenetur reiciendis, facere nostrum accusamus alias, dignissimos veniam asperiores.
-        Eos sapiente commodi, at facilis, aliquid <strong class="some">temporibus</strong> expedita maiores inventore!
+        Eos sapiente commodi, at facilis, aliquid <strong class="" style="color: green;">temporibus</strong> expedita maiores inventore!
       </div>
       <div class="col-md-4">Adipisci accusantium ad, est perspiciatis repellendus ab, incidunt libero nisi suscipit,
-        quae facilis, saepe. <strong>Quos</strong> optio eos officiis soluta magni.</div>
+        quae facilis, saepe. <strong style="color: green;">Quos</strong> optio eos officiis soluta magni.</div>
     </div>
     <hr>
-    <div class="row">
+    <div class="">
       <div class="col-md-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente doloremque dolorum odio
         impedit, neque, animi obcaecati molestias sed illum harum.</div>
-      <div class="col-md-4">Necessitatibus ab explicabo, provident magni nemo sit saepe quia hic <a
-          href="#">подписывайтесь</a> blanditiis amet voluptatibus beatae, voluptatem totam, enim corrupti ad odio!
+      <div class="col-md-4">Necessitatibus ab explicabo, provident magni nemo sit saepe quia hic <a href="#" style="text-decoration: none;">подписывайтесь</a> blanditiis amet voluptatibus beatae, voluptatem totam, enim corrupti ad odio!
       </div>
-      <div class="col-md-4">Alias atque <span class="some">repudiandae</some> ratione et non officia nesciunt
-          <strong>suscipit</strong> id, iure officiis vero est eveniet, iste cum beatae voluptates quasi!</div>
+      <div class="col-md-4">Alias atque <span class="some">repudiandae ratione et non officia nesciunt
+          <strong style="color: green;">suscipit</strong> id, iure officiis vero est eveniet, iste cum beatae voluptates quasi!</span></div>
     </div>
   </div>
   <h1>Задания по работе с событиями в jQuery</h1>
@@ -195,20 +39,25 @@ a.close {
   </div>
   <hr>
   <div class="task3">
-    <button id="buttonLeft"><-</button>
-    <button id="buttonRight">-></button>
+    <button id="buttonLeft">&lt;-</button>
+    <button id="buttonRight">-&gt;</button>
     <div class="element"></div>
   </div>
   <hr>
   <div class="task5">
-
+    <div class="overlay"></div>
+    <div class="modal" style="position: fixed; top: 50%; left: 50%;">
+      <p>Modal</p>
+      <button class="close">Закрыть</button>
+    </div>
+    <a href="#" class="open" style="text-decoration: none;">Открыть</a>
   </div>
 
   <h1>Анимация в jQuery</h1>
   <div class="task6">
-    <p>Lorem ipsum dolor sit, <strong>amet</strong> consectetur adipisicing <em>elit</em>. Error, saepe.</p>
-    <p>Lorem ipsum dolor sit, <strong>amet</strong> consectetur adipisicing <em>elit</em>. Error, saepe.</p>
-    <p>Lorem ipsum dolor sit, <strong>amet</strong> consectetur adipisicing <em>elit</em>. Error, saepe.</p>
+    <p>Lorem ipsum dolor sit, <strong style="color: green;">amet</strong> consectetur adipisicing <em class="selected">elit</em>. Error, saepe.</p>
+    <p>Lorem ipsum dolor sit, <strong style="color: green;">amet</strong> consectetur adipisicing <em class="selected">elit</em>. Error, saepe.</p>
+    <p>Lorem ipsum dolor sit, <strong style="color: green;">amet</strong> consectetur adipisicing <em class="selected">elit</em>. Error, saepe.</p>
   </div>
   <hr>
   <div class="task7">
@@ -218,30 +67,39 @@ a.close {
 <hr>
   <div class="task8">
     <div class="overlay"></div>
-<div class="lightbox">
-	<h3>Lightbox эффект</h3>
-	<a href="#" class="close"><img src="/close.png" alt="Закрыть" /></a>
-	<p>Lightbox открыт. Здесь Вы можете увидеть содержимое Вашего блока.</p>
+<div class="lightbox" style="position: fixed; top: 50%; left: 50%; margin: -46.7166px 0px 0px -250px;">
+	<h3>Lightbox</h3>
+	<a href="#" class="close" style="text-decoration: none;">X</a>
+	<p>Lightbox</p>
 </div>
-<a href="#" class="open">Открыть Lightbox</a>
+<a href="#" class="open" style="text-decoration: none;">Открыть</a>
   </div>
   <hr>
-  <div class="task9"></div>
+  <div class="task9">
+    <img src="https://avatars.mds.yandex.net/i?id=82ff0ae1e1b898eabc49079b9dabc684076c7dba-9429884-images-thumbs&amp;n=13" alt="">
+<img src="https://i.pinimg.com/originals/d3/0f/c8/d30fc877ade673509416fa5fe9917f71.jpg" alt="">
+<img src="https://prikolnye-kartinki.ru/img/picture/Jun/15/41b89f875a4e9dd7704847adf8a1a8ee/1.jpg" alt="">
+<div class="overlay"></div>
+<div class="img" style="position: fixed; top: 50%; left: 50%; margin: -101.75px 0px 0px -250px;">
+<img src="" alt="">
+</div>
+</div>
 <hr>
 <div class="task10">
 <div class="accordion_header">
 <h3>Section 1</h3>
 </div>
-<div class="accordion_body">
+<div class="accordion_body" style="display: none;">
   <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam, sunt.</p>
 </div>
 <div class="accordion_header">
   <h3>Section 2</h3>
   </div>
-  <div class="accordion_body">
+  <div class="accordion_body" style="display: none;">
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam, sunt.</p>
   </div>
 </div>
-</body>
+  <script crossorigin="" type="text/javascript" src="https://codesandbox.io/static/js/watermark-button.eeb14a97b.js"></script>
+  
 
-</html>
+</body>
